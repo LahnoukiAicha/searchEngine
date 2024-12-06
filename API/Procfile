@@ -1,1 +1,0 @@
-web: cd API && pip install -r requirements.txt && cd ../front && npm install && npm run build && cd .. && python search_engine_api.py
