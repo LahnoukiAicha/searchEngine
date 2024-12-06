@@ -11,6 +11,18 @@ from flask_cors import CORS
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
+from flask import Flask, send_from_directory
+
+app = Flask(__name__, static_folder='build', static_url_path='')
+
+@app.route('/')
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.errorhandler(404)
+def not_found(e):
+    return send_from_directory(app.static_folder, 'index.html')
+
 
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
